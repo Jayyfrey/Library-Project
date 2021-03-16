@@ -20,8 +20,8 @@ function sortAccountsByLastName(accounts) {
       return obj;
     }, {});
   let result = Object.values(ordered)
-  console.log(result)
-  //return result
+  //console.log(result)
+  return result
 }
 
 function getTotalNumberOfBorrows(account, books) {
