@@ -6,14 +6,22 @@ function findAccountById(accounts, id) {
 }
 
 function sortAccountsByLastName(accounts) {
-  // map => sort => push(find account)
-  let lastNames = accounts.map((account) => account.name.last)
-  lastNames.sort()
-  let sortedAccounts = []
-  for (let i = 0; i < lastNames.length; i++) {
-    sortedAccounts.push(accounts.find((account) => account.name.last === lastNames[i]))
-  }
-  return sortedAccounts
+    // accounts.reduce
+  //key is last name = value is account
+  //sort by keys
+  //object.values(array)
+  let unordered = accounts.reduce((acc, account) => {
+    acc[account.name.last] = account
+    return acc
+  }, {})
+  const ordered = Object.keys(unordered).sort().reduce(
+    (obj, key) => { 
+      obj[key] = unordered[key]; 
+      return obj;
+    }, {});
+  let result = Object.values(ordered)
+  console.log(result)
+  //return result
 }
 
 function getTotalNumberOfBorrows(account, books) {
